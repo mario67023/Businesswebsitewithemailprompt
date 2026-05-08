@@ -20,6 +20,6 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/Businesswebsitewithemailprompt",
+    basename: "/dominiongroupc",
   }
 );

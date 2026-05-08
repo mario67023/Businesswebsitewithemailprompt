@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Mail } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { BuilderOrFallback } from "../components/BuilderOrFallback";
 
 export function Home() {

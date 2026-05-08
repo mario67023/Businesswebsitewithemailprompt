@@ -1,6 +1,6 @@
 import { BuilderComponent, builder } from "@builder.io/react";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 
 // Initialize Builder.io with your API key
 // Replace 'YOUR_API_KEY' with your actual Builder.io public API key

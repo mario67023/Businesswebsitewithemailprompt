@@ -1,6 +1,6 @@
 import { BuilderComponent, builder } from "@builder.io/react";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 
 interface BuilderOrFallbackProps {
   children: React.ReactNode;

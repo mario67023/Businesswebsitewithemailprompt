@@ -26,7 +26,7 @@ export function Layout() {
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="Dominion Group Logo" className="h-16 w-16" />
+              <img src={logo} alt="Dominion Group Logo" className="h-16 w-auto max-w-[140px] object-contain" />
               <span className="text-xl font-medium">Dominion Group of Company</span>
             </Link>
 

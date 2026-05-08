@@ -18,8 +18,5 @@ export const router = createBrowserRouter(
         { path: "*", Component: BuilderPage },
       ],
     },
-  ],
-  {
-    basename: "/dominiongroupc",
-  }
+  ]
 );

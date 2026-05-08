@@ -4,20 +4,41 @@ import { BuilderOrFallback } from "../components/BuilderOrFallback";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    subject: "",
+    phone: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
+    
+    const data = new FormData();
+    data.append('access_key', 'ef2479dc-f5bb-4e5c-82b4-4ff0962e285c');
+    data.append('firstName', formData.firstName);
+    data.append('lastName', formData.lastName);
+    data.append('email', formData.email);
+    data.append('phone', formData.phone);
+    data.append('message', formData.message);
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      
+      if (response.ok) {
+        alert('Your message has been sent successfully!');
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      } else {
+        alert('There was an error sending your message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error sending your message. Please try again.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -33,9 +54,9 @@ export function Contact() {
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="mb-4">Contact Us</h1>
+          <h1 className="mb-4">Contact Us at: 702-822-0447</h1>
           <p className="text-lg opacity-90">
-            Get in touch with us. We'd love to hear from you and discuss how we can help
+            For Questions, Inquiries, or a Tour
           </p>
         </div>
       </section>
@@ -48,19 +69,31 @@ export function Contact() {
             <h2 className="mb-6">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block mb-2">Name</label>
+                <label htmlFor="firstName" className="block mb-2">First Name <span className="text-red-500">*</span></label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block mb-2">Email</label>
+                <label htmlFor="lastName" className="block mb-2">Last Name <span className="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-lg bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block mb-2">Email <span className="text-red-500">*</span></label>
                 <input
                   type="email"
                   id="email"
@@ -72,12 +105,12 @@ export function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="subject" className="block mb-2">Subject</label>
+                <label htmlFor="phone" className="block mb-2">Phone Number <span className="text-red-500">*</span></label>
                 <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
@@ -90,8 +123,7 @@ export function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
-                  rows={5}
+                  rows={6}
                   className="w-full px-4 py-3 rounded-lg bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                 />
               </div>
@@ -99,11 +131,8 @@ export function Contact() {
                 type="submit"
                 className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
               >
-                Send Message
+                Send
               </button>
-              {submitted && (
-                <p className="text-primary text-center">Thank you! We'll get back to you soon.</p>
-              )}
             </form>
           </div>
 

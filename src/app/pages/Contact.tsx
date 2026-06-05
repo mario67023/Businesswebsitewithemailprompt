@@ -161,7 +161,7 @@ export function Contact() {
                 <Mail className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
                   <h3 className="mb-1">Email</h3>
-                  <p className="text-muted-foreground">vegasbhs23@gmail.com</p>
+                  <p className="text-muted-foreground">dgc@dominiongroupc.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

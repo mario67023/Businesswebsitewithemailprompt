@@ -1,5 +1,4 @@
 import { Users, Target, Award } from "lucide-react";
-import signature from "../../imports/image.png";
 import { BuilderOrFallback } from "../components/BuilderOrFallback";
 
 export function About() {
@@ -98,7 +97,7 @@ export function About() {
       <section className="py-12 px-6 bg-secondary">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-muted-foreground mb-6">Authorized by:</p>
-          <img src={signature} alt="CEO Signature" className="mx-auto max-w-xs h-auto" />
+          <img src="/assets/Signature.png" alt="CEO Signature" className="mx-auto max-w-xs h-auto" />
           <p className="mt-4 text-muted-foreground">Ibironke Mercy Alaga</p>
           <p className="text-muted-foreground">Chief Executive Officer</p>
         </div>
